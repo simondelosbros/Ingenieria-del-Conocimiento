@@ -78,9 +78,6 @@
 	(Calculados TG 0)	;;; Numero total de ciclos de tramite realizados (espera-gestion-fin)
 	(Calculados TE 0)
 	
-	;(HoraActualizada 0) ;;; Borrar luego
-	;(hora_actual 12) ;;; Borrar luego
-	
 	(Ejecutar)
 )
   
@@ -435,9 +432,6 @@
 		
 		(assert (nEmpleados ?tipo (+ ?n 1)))
 		(assert (Informacion ?emp Disponible ?descanso))
-		;(assert (Disponible ?emp))
-		
-		;(printout t crlf "ANIADE A OFICINA " ?ofic crlf)
 		(assert (AniadeAOficina ?ofic))
 	)
 	
@@ -450,7 +444,6 @@
 		(assert (nEmpleados ?tipo (- ?n 1)))
 		(assert (Informacion ?emp Descansando ?h))
 		
-		;(assert (QuitaDosDeOficina ?ofic))
 		(assert (QuitaDeOficina ?ofic))
 	)
 	
@@ -479,7 +472,6 @@
 		
 		(assert (nEmpleados ?tipo (+ ?n 1)))
 		(assert (Informacion ?emp Disponible 0))
-		;(assert (Disponible ?emp))
 		
 		(assert (AniadeAOficina ?ofic))
 	)
@@ -535,9 +527,6 @@
 	
 	(retract ?f)
 )
-
-
-
 
 
 (defrule becareful
@@ -676,45 +665,6 @@
 	(assert (Luz ?ofi ON))
 	(retract ?f)
 )
-
-;(defrule EncenderLuzPresencia
-;	(Sensor_presencia ?sitio & Pasillo)
-;	?f <- (Luz ?sitio OFF)
-;	=>
-;	(printout t "Encender luz "?sitio crlf)
-;	(assert (Luz ?sitio ON))
-;	(assert (entra al ?sitio))
-;	(retract ?f)
-;)
-;
-;(defrule ApagarLuzPresencia
-;	(not (Sensor_presencia ?sitio & Pasillo))
-;	?f <- (Luz ?sitio ON)
-;	=>
-;	(printout t "Apagar luz " ?sitio crlf)
-;	(assert (Luz ?sitio OFF))
-;	(retract ?f)
-;)
-;
-;
-;
-;(defrule EncenderLuz
-;	(Sensor_puerta ?sitio & ~Recepcion)
-;	?f <- (Luz ?sitio OFF)
-;	=>
-;	(printout t "Encender luz " ?sitio crlf)
-;	(assert (Luz ?sitio ON))
-;	(retract ?f)
-;)
-;
-;(defrule ApagarLuz
-;	(not (Sensor_puerta ?sitio & ~Recepcion))
-;	?f <- (Luz ?sitio ON)
-;	=>
-;	(printout t "Apagar luz " ?sitio crlf)
-;	(assert (Luz ?sitio OFF))
-;	(retract ?f)
-;)
 
 
 
